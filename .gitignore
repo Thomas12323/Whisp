@@ -12,6 +12,7 @@ dist/
 inference/overlay.log
 
 # Local / OS files
+.claude/
 .DS_Store
 Thumbs.db
 Desktop.ini
