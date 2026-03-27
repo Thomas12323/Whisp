@@ -27,6 +27,7 @@ from pystray import Icon, MenuItem, Menu
 from PIL import Image, ImageDraw, ImageFont
 from pathlib import Path
 import settings
+import settings as settings_mod
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(levelname)s  %(message)s")
 log = logging.getLogger("whisp-overlay")

@@ -1,6 +1,6 @@
 """
 Whisp — Settings Manager
-Liest/schreibt %APPDATA%\Whisp\settings.json
+Liest/schreibt %APPDATA%\\Whisp\\settings.json
 """
 import json
 import os
@@ -39,7 +39,7 @@ def load() -> dict:
 
 
 def save(cfg: dict) -> None:
-    """Speichert Settings nach %APPDATA%\Whisp\settings.json"""
+    """Speichert Settings nach %APPDATA%\\Whisp\\settings.json"""
     APP_DIR.mkdir(parents=True, exist_ok=True)
     with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
         json.dump(cfg, f, indent=2, ensure_ascii=False)
