@@ -1,122 +1,161 @@
-# Whisp Overlay
+# Whisp
 
-Systemweites Diktierwerkzeug fuer Windows. Laeuft vollstaendig lokal, ohne Cloud, ohne dass Daten den PC verlassen.
+Local speech-to-text overlay for Windows with a global hotkey, tray controls, live microphone monitoring, and ZIP-based releases.
 
-**Primaermodell:** [Cohere Transcribe](https://huggingface.co/CohereLabs/cohere-transcribe-03-2026) (2B Parameter, Apache 2.0)  
-**Backup:** `faster-whisper`
+Lokales Speech-to-Text-Overlay fuer Windows mit globalem Hotkey, Tray-Steuerung, Live-Mikrofonanzeige und ZIP-basierten Releases.
 
-## Release-Modell
+## English
 
-Whisp wird ueber **GitHub Releases als ZIP** verteilt.
+### What is Whisp?
 
-Es gibt bewusst **keinen `.exe`-Installer mehr**, weil Windows Smart App Control den unsignierten Installer blockiert hat. Der empfohlene Endnutzerpfad ist deshalb:
+Whisp is a local dictation tool for Windows.
 
-1. ZIP aus GitHub Releases herunterladen
-2. ZIP entpacken
-3. `setup.bat` einmal ausfuehren
-4. danach `overlay.bat` starten
+You hold `Ctrl + Shift + Space`, speak, release the key, and Whisp inserts the transcribed text into the active app.
 
-Der Ordner `installer/` ist nur noch Altbestand aus dem verworfenen EXE-Ansatz und wird fuer normale Releases nicht mehr benoetigt.
+Main features:
 
-## Voraussetzungen
+- fully local processing
+- Cohere Transcribe as primary model
+- faster-whisper as backup model
+- system tray controls for model, language, overlay position, settings, and autostart
+- live dashboard with microphone level, status, and transcription history
+- ZIP-based distribution instead of `.exe`, to avoid Smart App Control blocking
+
+### Requirements
 
 - Windows 10 / 11
-- Python 3.11 von [python.org/downloads](https://www.python.org/downloads/)
-- Bei der Installation unbedingt **"Add Python to PATH"** aktivieren
-- HuggingFace-Account von [huggingface.co/join](https://huggingface.co/join)
-- Ca. 4 GB freier Speicherplatz fuer das Cohere-Modell
-- Mikrofon
+- Python 3.11
+- "Add Python to PATH" enabled during installation
+- HuggingFace account for the gated Cohere model
+- about 4 GB free disk space for the first model download
+- microphone
 
-## Installation
+### Installation
 
-1. ZIP entpacken, z.B. nach `C:\Whisp`
-2. `setup.bat` starten
-3. Beim HuggingFace-Schritt:
-   - [Cohere-Modellseite](https://huggingface.co/CohereLabs/cohere-transcribe-03-2026) oeffnen
-   - "Access repository" bestaetigen
-   - [Token-Seite](https://huggingface.co/settings/tokens) oeffnen
-   - Read-Token erzeugen
-   - Token im Setup eingeben
+1. Download the latest ZIP from GitHub Releases
+2. Extract it somewhere, for example `C:\Whisp`
+3. Run `setup.bat`
+4. Follow the HuggingFace login/token steps
+5. Start Whisp with `overlay.bat`
 
-## Starten
+### Usage
 
-`overlay.bat` starten.
+- Hold `Ctrl + Shift + Space` to start recording
+- Release `Space` to stop recording
+- Whisp transcribes and pastes the text into the active window
 
-Beim ersten Start wird das Cohere-Modell einmalig heruntergeladen. Danach erscheint unten am Bildschirm sinngemaess:
+Works well in apps like Word, Outlook, Teams, browser text fields, Notepad, and VS Code.
 
-> Whisp bereit (cohere)
+### Updating
 
-Ab dann laeuft Whisp im System-Tray.
+There is no installer to remove.
 
-## Bedienung
+For most updates:
 
-| Aktion | Beschreibung |
-|---|---|
-| `Ctrl` + `Shift` + `Space` halten | Aufnahme startet |
-| `Space` loslassen | Aufnahme stoppt, Transkription laeuft |
-| Automatisch | Text wird ins aktive Fenster eingefuegt |
+1. Download the new ZIP
+2. Replace the old files with the new ones
+3. Start Whisp again with `overlay.bat`
 
-Funktioniert in Word, Outlook, Teams, Browsern, Notepad, VS Code und allgemein ueberall dort, wo man tippen kann.
+If dependencies changed:
 
-## Gesprochene Satzzeichen
+1. Replace the files
+2. Run `setup.bat` again
+3. Start Whisp with `overlay.bat`
 
-| Gesprochen | Ergebnis |
-|---|---|
-| `Komma` | `,` |
-| `Punkt` | `.` |
-| `Fragezeichen` | `?` |
-| `Ausrufezeichen` | `!` |
-| `Doppelpunkt` | `:` |
-| `Neue Zeile` | Zeilenumbruch |
-| `Neuer Absatz` | Absatz |
+### Release workflow
 
-## Tray-Menue
-
-```text
-Modell    >  Cohere Transcribe
-            faster-whisper
-
-Sprache   >  Auto-Erkennung
-            Deutsch
-            Englisch
-            Spanisch
-            Franzoesisch
-            Italienisch
-
-Autostart
-Dashboard oeffnen
-Einstellungen
-Beenden
-```
-
-## GitHub Release bauen
+Create a release ZIP locally:
 
 ```bat
 release.bat 1.0.0
+```
+
+Then tag and push:
+
+```powershell
 git tag v1.0.0
 git push origin v1.0.0
 ```
 
-Die ZIP in `dist/` ist das Artefakt fuer GitHub Releases.
+Upload the generated ZIP from `dist\` to GitHub Releases.
 
-## Entwicklerhinweis
+## Deutsch
 
-Die Next.js-App in `src/` und der lokale Server in `inference/server.py` sind Entwicklungs- und Vergleichswerkzeuge. Fuer normale Tester reicht der ZIP-Pfad mit `setup.bat` und `overlay.bat`.
+### Was ist Whisp?
 
-## Fehlersuche
+Whisp ist ein lokales Diktier-Tool fuer Windows.
 
-**Overlay erscheint nicht / kein Text wird eingefuegt**
+Du haeltst `Ctrl + Shift + Space`, sprichst, laesst los, und Whisp fuegt den erkannten Text in die aktive Anwendung ein.
 
-- Konsolenfenster pruefen
-- `overlay.bat` verwenden, nicht direkt `overlay.py`
+Wichtige Funktionen:
 
-**Cohere wird nicht geladen**
+- vollstaendig lokale Verarbeitung
+- Cohere Transcribe als Primaermodell
+- faster-whisper als Backup
+- System-Tray fuer Modell, Sprache, Overlay-Position, Einstellungen und Autostart
+- Live-Dashboard mit Mikrofonpegel, Status und Verlauf
+- ZIP-Distribution statt `.exe`, damit Windows Smart App Control nichts blockiert
 
-- Login pruefen:
-  `inference\venv\Scripts\python -c "from huggingface_hub import whoami; print(whoami())"`
-- Zugriff auf das Cohere-Modell auf HuggingFace akzeptieren
+### Voraussetzungen
 
-**Hotkey reagiert nicht**
+- Windows 10 / 11
+- Python 3.11
+- bei der Installation "Add Python to PATH" aktivieren
+- HuggingFace-Account fuer das geschuetzte Cohere-Modell
+- ca. 4 GB freier Speicher fuer den ersten Model-Download
+- Mikrofon
 
-- pruefen, ob ein anderes Programm `Ctrl+Shift+Space` belegt
-- kurz in Notepad testen
+### Installation
+
+1. Die aktuelle ZIP aus den GitHub Releases herunterladen
+2. ZIP entpacken, z.B. nach `C:\Whisp`
+3. `setup.bat` ausfuehren
+4. Den HuggingFace-Login bzw. Token-Schritt abschliessen
+5. Whisp mit `overlay.bat` starten
+
+### Benutzung
+
+- `Ctrl + Shift + Space` halten, um die Aufnahme zu starten
+- `Space` loslassen, um die Aufnahme zu beenden
+- Whisp transkribiert und fuegt den Text in das aktive Fenster ein
+
+Funktioniert gut in Word, Outlook, Teams, Browser-Feldern, Notepad und VS Code.
+
+### Updates
+
+Du musst nichts deinstallieren.
+
+Fuer die meisten Updates gilt:
+
+1. neue ZIP herunterladen
+2. alte Dateien durch die neuen ersetzen
+3. Whisp wieder mit `overlay.bat` starten
+
+Falls sich Python-Abhaengigkeiten geaendert haben:
+
+1. Dateien ersetzen
+2. `setup.bat` nochmal ausfuehren
+3. danach `overlay.bat` starten
+
+### Release-Workflow
+
+Release-ZIP lokal bauen:
+
+```bat
+release.bat 1.0.0
+```
+
+Danach taggen und pushen:
+
+```powershell
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Die ZIP aus `dist\` anschliessend in GitHub Releases hochladen.
+
+## Notes
+
+- The first start can take longer because models may be loaded or downloaded.
+- The tray menu is the main control center for everyday use.
+- `setup.bat` is for setup and dependency refresh, not for every normal start.
