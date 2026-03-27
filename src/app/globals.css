@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #09090b; /* zinc-950 */
+  color: #f4f4f5;      /* zinc-100 */
+}
+
+/* Native select: dark option list on all platforms */
+option {
+  background: #18181b; /* zinc-900 */
+  color: #f4f4f5;
+}

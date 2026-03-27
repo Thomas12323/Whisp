@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(rtk npx:*)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(taskkill /F /IM python.exe)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(taskkill //F //IM python.exe)",
+      "Bash(/c/Users/Tobias/Documents/Coding/Whisp/inference/venv/Scripts/python.exe --version)",
+      "Bash(/c/Users/Tobias/Documents/Coding/Whisp/inference/venv/Scripts/pip.exe list:*)",
+      "Bash(where 7z)",
+      "Bash(inference/venv/Scripts/python inference/assets/whisp_icon.py)",
+      "Bash(copy \"C:\\\\Users\\\\Tobias\\\\Documents\\\\Coding\\\\Whisp\\\\inference\\\\assets\\\\whisp.ico\" \"C:\\\\Users\\\\Tobias\\\\Documents\\\\Coding\\\\Whisp\\\\installer\\\\assets\\\\whisp.ico\")",
+      "Bash(\"/c/Program Files \\(x86\\)/Inno Setup 6/ISCC.exe\" whisp_setup.iss)",
+      "Bash(cmd.exe /c \"where ISCC 2>nul || dir /b /s \"\"C:\\\\Program Files*\\\\ISCC.exe\"\" 2>nul\")",
+      "Bash(cmd.exe /c \"dir /b /s \"\"C:\\\\Program Files \\(x86\\)\\\\ISCC.exe\"\" 2>nul & dir /b /s \"\"C:\\\\Program Files\\\\ISCC.exe\"\" 2>nul & dir /b /s \"\"%LOCALAPPDATA%\\\\Programs\\\\Inno Setup*\\\\ISCC.exe\"\" 2>nul\")",
+      "Bash(cmd.exe /c \"dir /b /s \"\"%LOCALAPPDATA%\\\\Programs\\\\Inno*\"\" 2>nul\")",
+      "Bash(cmd.exe /c \"reg query \"\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Uninstall\"\" /s /f \"\"Inno Setup\"\" 2>nul | findstr InstallLocation\")",
+      "Bash(cmd.exe /c \"dir /b /s \"\"C:\\\\Users\\\\Tobias\\\\AppData\\\\Local\\\\Programs\"\" 2>nul | findstr /i inno\")",
+      "Bash(cmd.exe /c \"dir /b /s \"\"C:\\\\Program Files \\(x86\\)\\\\Inno*\"\" 2>nul & dir /b /s \"\"C:\\\\Program Files\\\\Inno*\"\" 2>nul & dir /b /s \"\"%APPDATA%\\\\Inno*\"\" 2>nul & dir /b /s \"\"C:\\\\Users\\\\Tobias\\\\AppData\\\\Local\\\\Inno*\"\" 2>nul\")",
+      "Bash(cmd.exe /c \"dir /b /s \"\"C:\\\\Program Files \\(x86\\)\\\\ISCC.exe\"\" 2>nul & dir /b /s \"\"C:\\\\Program Files\\\\ISCC.exe\"\" 2>nul\")",
+      "Bash(cmd.exe /c \"dir \"\"C:\\\\Program Files \\(x86\\)\"\" /b 2>nul & dir \"\"C:\\\\Program Files\"\" /b 2>nul\")",
+      "Bash(cmd.exe /c \"dir \"\"C:\\\\Program Files \\(x86\\)\"\" /b & dir \"\"C:\\\\Program Files\"\" /b\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\Program Files'',''C:\\\\Program Files \\(x86\\)'' -Filter ''*Inno*'' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 5 FullName\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\'' -Filter ''ISCC.exe'' -Recurse -ErrorAction SilentlyContinue -Depth 5 | Select-Object FullName\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\Users\\\\Tobias\\\\AppData\\\\Local'' -Filter ''ISCC.exe'' -Recurse -ErrorAction SilentlyContinue | Select-Object FullName\")",
+      "Bash(powershell.exe -Command \"& ''C:\\\\Users\\\\Tobias\\\\AppData\\\\Local\\\\Programs\\\\Inno Setup 6\\\\ISCC.exe'' ''C:\\\\Users\\\\Tobias\\\\Documents\\\\Coding\\\\Whisp\\\\installer\\\\whisp_setup.iss''\")",
+      "Bash(cmd.exe /c \"type \"\"%LOCALAPPDATA%\\\\Whisp\\\\install.log\"\" 2>nul || echo LOG NICHT GEFUNDEN\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''$env:LOCALAPPDATA\\\\Whisp'' -Recurse -ErrorAction SilentlyContinue | Select-Object FullName\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\Users\\\\Tobias\\\\AppData\\\\Local\\\\Whisp'' -ErrorAction SilentlyContinue | Select-Object Name, Length\")",
+      "Bash(powershell.exe -Command \"Get-Content ''C:\\\\Users\\\\Tobias\\\\AppData\\\\Local\\\\Whisp\\\\install.log''\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\Users\\\\Tobias\\\\AppData\\\\Local\\\\Whisp'' -ErrorAction SilentlyContinue | Select-Object Name\")",
+      "Bash(Select-String -Pattern \"error|Error|Successful|Failed\")",
+      "Bash(powershell.exe -Command \"& ''C:\\\\Users\\\\Tobias\\\\AppData\\\\Local\\\\Programs\\\\Inno Setup 6\\\\ISCC.exe'' ''C:\\\\Users\\\\Tobias\\\\Documents\\\\Coding\\\\Whisp\\\\installer\\\\whisp_setup.iss'' | Select-String ''Successful|Error|error''\")",
+      "Bash(powershell.exe -Command \"& ''C:\\\\Users\\\\Tobias\\\\AppData\\\\Local\\\\Programs\\\\Inno Setup 6\\\\ISCC.exe'' ''C:\\\\Users\\\\Tobias\\\\Documents\\\\Coding\\\\Whisp\\\\installer\\\\whisp_setup.iss'' | Select-String ''Successful|rror''\")",
+      "Bash(powershell.exe -Command \"Select-String -Path ''C:\\\\Users\\\\Tobias\\\\AppData\\\\Local\\\\Whisp\\\\inference\\\\overlay.py'' -Pattern ''requested not in models|load_models_then''\")",
+      "Bash(inference/venv/Scripts/pip install:*)"
+    ]
+  }
+}
