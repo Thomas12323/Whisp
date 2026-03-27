@@ -62,16 +62,6 @@ Falls sich Python-Abhaengigkeiten geaendert haben:
 2. `setup.bat` nochmal ausfuehren
 3. Danach `overlay.bat` starten
 
-### Releases bauen
-
-```bat
-release.bat 1.0.1
-git tag v1.0.1
-git push origin v1.0.1
-```
-
-Die ZIP aus `dist\` danach in GitHub Releases hochladen.
-
 ## English
 
 ### What is Whisp?
@@ -129,16 +119,6 @@ If Python dependencies changed:
 1. Replace the files
 2. Run `setup.bat` again
 3. Start Whisp with `overlay.bat`
-
-### Building releases
-
-```bat
-release.bat 1.0.1
-git tag v1.0.1
-git push origin v1.0.1
-```
-
-Then upload the ZIP from `dist\` to GitHub Releases.
 
 ## Notes
 
